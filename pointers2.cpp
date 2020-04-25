@@ -1,21 +1,20 @@
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
 int main(int argc, char const *argv[]) {
-    int arr[] = {1, 2, 3, 4, 5};
-    // int *p = &arr[0]; -> &*(p) -> p
-    int *p = arr;
-    // int **pp = &p;
-    int i = 0;
+    char name[100];
+    cout << "Digite um nome: ";
+    cin >> name;
 
-    while (i < 5) {
-        cout << *p << endl;
-        // cout << **pp << endl; // segmentation fault - non continuous index for pp
-        p++;
-        // pp++;
-        i++;
+    int l = strlen(name);
+    char *p = name + l - 1;
+
+    while (p >= &name[0]) {
+        cout << *p;
+        p--;
     }
-
+    cout << endl;
     return 0;
 }

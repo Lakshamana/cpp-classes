@@ -2,9 +2,24 @@
 
 using namespace std;
 
-typedef struct person {
+typedef struct Person {
     char* name;
     int age;
+
+    Person(char *name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+
+    Person(char *name) {
+        this->name = name;
+        this->age = 0;
+    }
+
+    Person() {
+        this->name = "";
+        this->age = 0;
+    }
 
     void set_name(char *name) {
         this->name = name;
@@ -13,17 +28,17 @@ typedef struct person {
     void set_age(int age) {
         this->age = age;
     }
-} t_person;
+};
 
 
 int main(int argc, char *argv[]) {
-    t_person persons[10];
-    t_person *p = persons;
-    char *c = "Lakshamana";
+    Person person("Lakshamana", 22);
 
-    p->set_name(c);
-    p->set_age(22);
+    cout << person.name << endl;
+    cout << person.age << endl;
+    cout << "With pointers:" << endl;
 
+    Person *p = &person;
     cout << p->name << endl;
     cout << p->age << endl;
     return 0;

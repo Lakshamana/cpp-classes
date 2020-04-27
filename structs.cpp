@@ -2,24 +2,35 @@
 
 using namespace std;
 
-typedef struct Person {
-    char* name;
-    int age;
+struct Person {
+    private:
+        char* name;
+        int age;
 
-    // Method/constructor impl can be out of this context
-    Person(char *name, int age);
+    public:
+        // Method/constructor impl can be out of this context
+        Person(char *name, int age);
 
-    Person(char *name);
+        Person(char *name);
 
-    Person();
+        Person();
 
-    void set_name(char *name) {
-        this->name = name;
-    }
+        char * get_name() {
+            return this->name;
+        }
 
-    void set_age(int age) {
-        this->age = age;
-    }
+        void set_name(char *name) {
+            this->name = name;
+        }
+
+        int get_age() {
+            return this->age;
+        }
+
+        void set_age(int age) {
+            this->age = age;
+        }
+
 };
 
 // Use scope resolution operator (::)
@@ -43,12 +54,13 @@ Person::Person() {
 int main(int argc, char *argv[]) {
     Person person("Lakshamana", 22);
 
-    cout << person.name << endl;
-    cout << person.age << endl;
+    cout << person.get_name() << endl;
+    cout << person.get_age() << endl;
     cout << "\nWith pointers:" << endl;
 
     Person *p = &person;
-    cout << p->name << endl;
-    cout << p->age << endl;
+    cout << p->get_name() << endl;
+    // cout << p->age << endl; cannot access private struct member
+    cout << p->get_age() << endl;
     return 0;
 }

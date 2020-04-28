@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
@@ -38,21 +39,25 @@ struct Person {
 // constructor belongs to
 Person::Person(char *name, int age) {
     this->name = name;
+    // strcpy(this->name, name);
     this->age = age;
 }
 
 Person::Person(char *name) {
     this->name = name;
+    strcpy(this->name, name);
     this->age = 0;
 }
 
 Person::Person() {
-    this->name = "";
+    this->name = (char *)"";
+    // we can use strcpy to avoid compilation warnings
+    // strcpy(this->name, ""); 
     this->age = 0;
 }
 
 int main(int argc, char *argv[]) {
-    Person person("Lakshamana", 22);
+    Person person((char *) "Lakshamana", 22);
 
     cout << person.get_name() << endl;
     cout << person.get_age() << endl;

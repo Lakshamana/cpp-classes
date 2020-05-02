@@ -29,5 +29,12 @@ int main(int argc, char *argv[]) {
   cout << "C const char * -> std::string: " << string(str) << endl;
   cat.clear();
   cout << "Cleared string!" << endl;
+
+  string name;
+  cout << "Type a name: ";
+  getline(cin, name);
+  cout << "Typed $name: " << name << endl;
+  name += " github.com/Lakshamana";
+  cout << "Append $name with +=: " << name << endl;
   return 0;
 }

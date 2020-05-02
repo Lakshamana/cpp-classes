@@ -33,10 +33,10 @@ int main(int argc, char const *argv[]) {
     }
 
     p3[0] = 100;
-    cout << "Changed p3[0] to " << *p3 << endl; 
+    cout << "Changed p3[0] to " << *p3 << endl;
 
     // We can even have a constant pointer to constant values array
-    const char* const p4 = "Guilherme";
+    const char* const p4 = "Lakshamana";
     // p4 = new char[100]; error - cannot change p4's mem address
     // p4[1] = "v"; error - cannot change *(p4 + 1) to another value
 

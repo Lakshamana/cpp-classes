@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
         {"Mary Jane", 32},
         {"Jeannine Bigalow", 34}
     };
-    
+
     cout << "--Before end--" << endl;
     // Destructors are called after program ends
     return 0;

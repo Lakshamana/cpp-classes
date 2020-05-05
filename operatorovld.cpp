@@ -34,5 +34,9 @@ int main(int argc, char *argv[]) {
 
   cout << "Real part: " << c3.real << endl;
   cout << "Imaginary part: " << c3.img << endl;
+
+  c3 = c1;
+  cout << "Real part: " << c3.real << endl;
+  cout << "Imaginary part: " << c3.img << endl;
   return 0;
 }

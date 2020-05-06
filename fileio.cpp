@@ -9,7 +9,9 @@ vector<string> readlines(ifstream& in) {
   while(in.good()) {
     string buf;
     getline(in, buf);
-    lines.push_back(buf);
+    if (buf != "") {
+      lines.push_back(buf);
+    }
   }
   return lines;
 }

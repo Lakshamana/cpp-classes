@@ -28,10 +28,20 @@ int main(int argc, char *argv[]) {
 
   // Masochistic way
   vector<Point*>::iterator it;
-  for(it = v.begin(); it != v.end(); it++) {
+  for(it = v.begin(); it < v.end(); it++) {
     // In that case it will be of type (Pointer**),
     // which means you should always derreference it
     printf("(%i, %i)\n", (*it)->x, (*it)->y);
+  }
+
+  cout << "\nWe can also have a object vector:" << endl;
+  vector<Point> v2;
+  for (int i = 0; i < 5; i++) {
+    v2.push_back(Point(i, i + 1));
+  }
+
+  for (Point& p : v2) {
+    printf("(%i, %i)\n", p.x, p.y);
   }
   return 0;
 }

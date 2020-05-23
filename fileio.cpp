@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 
   // less verbose form
   int i = 0;
-  for(string& line : lines) {
+  for(string&line : lines) {
     cout << line << " " << i++ << endl;
   }
 

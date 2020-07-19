@@ -19,8 +19,7 @@ class Graph {
     bool is_neighbour(int v1, int v2);
     void dfs(int v);
     void bfs(int v);
-    void has_cycle(int v);
-    
+    bool has_cycle();
 };
 
 Graph::Graph(int n) {
@@ -99,25 +98,39 @@ bool Graph::cycle_dfs(int s) {
   stack<int> stack;
   bool visited[this->n], stacked[this->n];
   for (int i = 0; i < this->n; ++i) {
-    visited[i] = false;
-    stacked[i] = false;
+    visited[i] = stacked[i] = false;
   }
 
   stack.push(s);
   while (!stack.empty()) {
     int t = stack.top();
     stack.pop();
+    stacked[t] = false;
     if (!visited[t]) {
-      cout << "Visiting: " << t << '\n';
       visited[t] = true;
-      stacked[t] = true;
       list<int>::iterator it;
       for (it = adj[t].begin(); it != adj[t].end(); ++it) {
-        if (stacked[*it]) return true;
-        stack.push(*it);
+        if (visited[*it] && *it == s) return true;
+        else if (visited[*it]) {
+          continue;  
+        }
+        if (!stacked[*it]) {
+          stack.push(*it);
+          stacked[*it] = true;
+        }
       }
     }
   }
+  return false;
+}
+
+bool Graph::has_cycle() {
+  for (int i = 0; i < n; ++i) {
+    if (this->cycle_dfs(i)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 int main(int argc, char *argv[]) {
@@ -127,14 +140,8 @@ int main(int argc, char *argv[]) {
   g.add_edge(1, 2);
   g.add_edge(3, 1);
   g.add_edge(3, 2);
+  g.add_edge(2, 0);
 
-  cout << "Out degree for vtx 1: " << g.out_degree(1);
-  cout << "\nOut degree for vtx 1: " << g.out_degree(3);
-  cout << "\nIs neighbour (0, 1): " << (g.is_neighbour(0, 1) ? "true" : "false");
-  cout << "\nIs neighbour (2, 0): " << (g.is_neighbour(2, 0) ? "true" : "false") << '\n';
-
-  g.dfs(0);
-  cout << '\n';
-  g.bfs(0);
+  cout << "Has cycle?: " << (g.has_cycle() ? "yes" : "no") << '\n';
   return 0;
 }

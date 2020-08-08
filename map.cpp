@@ -24,13 +24,9 @@ int main(int argc, char *argv[]) {
   * map<string, int> m(pairs, pairs + 3)
   * */
 
-  map<string, int> m = {
-    {"John Doe", 1},
-    {"Mary Jane", 2},
-    make_pair("Katy Strong", 3)
-  };
+  map<string, int> m;
 
-  m.at("John Doe") = 10;
+  // m.at("John Doe") = 10;
   m["John Doe"] = 1;
   m["Vishal Pradit"] = 4;
   print(m);

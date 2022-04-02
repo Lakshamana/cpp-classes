@@ -11,7 +11,9 @@ class Language {
     FriendLanguage *lfriend;
 
     // Define friend function
-    friend void myFriend(Language &l);
+    friend void myFriend(Language &l) {
+        cout << "Friend says: " << l.name << endl;
+    }
 
     public:
         char name[100];
@@ -28,8 +30,8 @@ class Language {
 };
 
 // We can also have friend classes
-// Whenever we setup a class to be another's friend,
-// it can acess its wrapper class members.
+// Whenever we setup a class to be another's friend e.g. (Language friend of FriendLanguage),
+// it can acess its wrapper (FriendLanguage) class members.
 // e.g. Language can access all of FriendLanguage class members.
 // Note the opposite is not true
 class FriendLanguage {
@@ -40,21 +42,20 @@ class FriendLanguage {
         }
 };
 
-// Implement friend function
-void myFriend(Language &l) {
-    cout << "Friend says: " << l.name << endl;
-}
-
 void Language::showFriend() {
     lfriend->greet();
 }
 
 int main(int argc, char *argv[]) {
     Language l("C++");
-    // cout << "Language: " << l.name << endl;
-    // myFriend(l);
+    cout << "Language: " << l.name << endl;
+    // you may access myFriend outside Language's scope, as this is a friend function
+    // in fact, friend functions belong to global scope
+    // hint: try to define a function called `myFriend` inside FriendLanguage
+    myFriend(l);
 
     FriendLanguage fl;
+    // you can't access fl's greet directly, as this is a protected function
     // cout << fl.getName() << endl; // error - FriendLanguage cannot acess Language methods
     l.showFriend();
     return 0;

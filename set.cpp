@@ -1,5 +1,7 @@
+#include <cstdio>
 #include <iostream>
 #include <set>
+#include <utility>
 
 using namespace std;
 
@@ -17,5 +19,12 @@ int main(int argc, char *argv[]) {
   } else {
     cout << "Element 50 exists" << endl;
   }
+
+  set<pair<double, int>> s2 = { make_pair(3.0, 1), make_pair(1.0, 2) };
+  cout << "Keys: ";
+  for (pair<double, int> pair : s2) {
+    printf("%.1f ", pair.first);
+  }
+
   return 0;
 }

@@ -1,10 +1,10 @@
+#include <cstdio>
+#include <cstring>
 #include <iostream>
 #include <list>
 #include <queue>
 #include <algorithm>
 #include <stack>
-#include <map>
-#include <string.h>
 
 using namespace std;
 
@@ -151,19 +151,17 @@ void Graph::_union(vector<int>& subset, int v1, int v2) {
 
 bool Graph::union_find() {
   vector<int> subset(this->n, -1);
-  // memset(subset, -1, this->n * sizeof(int));
-  // vector<int>* flags = (vector<int>*) malloc(this->n * sizeof(vector<int>));
-  // for (int i = 0; i < this->n; ++i) {
-  //   flags[i] = (vector<int>) calloc(this->n, sizeof(int));
-  // }
-  
-  map<string, bool> m;
+  bool map[this->n][this->n];
+
+  memset(*map, false, this->n * sizeof(*map));
+
   for (int i = 0; i < this->n; ++i) {
     list<int>::iterator it;
     for (it = adj[i].begin(); it != adj[i].end(); ++it) {
-      printf("%d, %d = %d\n", *it, i, m[to_string(*it) + to_string(i)]);
-      if (!m[to_string(*it) + to_string(i)]) {
-        m[to_string(i) + to_string(*it)] = true;
+      bool check_value = map[*it][i];
+      printf("%d, %d = %d\n", *it, i, check_value);
+      if (!check_value) {
+        map[i][*it] = true;
         int v1 = this->_find(subset, i);
         int v2 = this->_find(subset, *it);
         if (v1 != v2) {

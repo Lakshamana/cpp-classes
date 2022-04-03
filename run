@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bin=`echo $1 | cut -d. -f1 | cut -d/ -f2`
-g++ -O3 $1 -o "build/$bin" && ./build/$bin ${@:2}
+g++ -g $1 -o "build/$bin" && ./build/$bin ${@:2}
 
 # Use g++ -o [name].o [..].cpp -Wall 
 # in order to compile with all of 

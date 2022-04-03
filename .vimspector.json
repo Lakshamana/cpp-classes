@@ -1,0 +1,13 @@
+  {
+    "configurations": {
+      "Launch": {
+        "adapter": "vscode-cpptools",
+        "configuration": {
+          "request": "launch",
+          "program": "./build/knapsack01",
+          "cwd": "${workspaceRoot}",
+          "externalConsole": true
+        }
+      }
+    }
+  }

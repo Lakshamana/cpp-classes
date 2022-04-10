@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
   map<const char, funct> actions = {
     make_pair('1', []() {
       cout << "\nListing people...\n" << endl;
-      ifstream is("file.txt");
+      ifstream is("output/file.txt");
       scan(is, [](Person& p) {
         cout << "Name: " << p.get_name() << endl;
         cout << "Age: " << p.get_age() << endl << endl;

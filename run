@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if ! test -d ./build; then
+  mkdir build
+fi
+
 bin=`echo $1 | cut -d. -f1 | cut -d/ -f2`
 g++ -g $1 -o "build/$bin" && ./build/$bin ${@:2}
 
